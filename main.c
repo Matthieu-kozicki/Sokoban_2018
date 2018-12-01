@@ -32,12 +32,12 @@ int ko(char *str)
             y = y + 1;
         if (key == KEY_RIGHT)
             x = x + 1;
-	if (key == KEY_LEFT)
+        if (key == KEY_LEFT)
             x = x - 1;
-	clear();
-	printw("%s",str);
-	move(y,x);
-	printw("P");
+        clear();
+        printw("%s",str);
+        move(y,x);
+        printw("P");
     }
     clear();
     endwin();
@@ -68,7 +68,8 @@ int so(int arc, char **arg)
     read (fd, buff, s.st_size);
     buff[s.st_size + 1] = '\0';
     while (buff[i] != '\0') {
-        if (buff[i] == '#' || buff[i] == ' ' || buff[i] == '\n' || buff[i] == 'X' || buff[i] == 'P' || buff[i] == 'O')
+        if (buff[i] == '#' || buff[i] == ' ' || buff[i] == '\n'
+            || buff[i] == 'X' || buff[i] == 'P' || buff[i] == 'O')
             i = i + 1;
         else {
             my_putstr("error\n");
@@ -86,8 +87,10 @@ int main(int arc, char **arg)
     if (arg[1][0] == '-' && arg[1][1] == 'h') {
         my_putstr("USAGE\n      ./my_sokoban map\n");
         my_putstr("DESCRIPTION\n      ");
-        my_putstr("map   file representing the warehouse map, containing '#' for walls,\n");
-        my_putstr("      'P' for the player, 'X' for the boxes and 'O' for the storage locations.\n");
+        my_putstr("map   file representing the warehouse map, co"
+                  "ntaining '#' for walls,\n");
+        my_putstr("      'P' for the player, 'X' for the boxes and"
+                  " 'O' for the storage locations.\n");
         return (84);
     }
     so(arc, arg);
