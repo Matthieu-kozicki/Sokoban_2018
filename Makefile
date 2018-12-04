@@ -5,12 +5,13 @@
 ## no
 ##
 
-SRC	=	my_strlen.c \
-		my_putchar.c \
-		my_putstr.c \
-		my_put_nbr.c \
+SRC	=	src/my_strlen.c \
+		src/my_putchar.c \
+		src/my_putstr.c \
+		src/my_put_nbr.c \
+		src/other_function.c \
 
-SRCM	=	main.c
+SRCM	=	src/main.c
 
 OBJ	=	$(SRC:.c=.o)
 
