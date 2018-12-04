@@ -101,21 +101,58 @@ char **move_it(char **array, pos_t *pos, int key)
     return (array);
 }
 
+char **copy_2d(char **array, char **copy, info_t *info)
+{
+    int i = 0;
+    int  j = 0;
+
+    while(i < info->row) {
+        while (j < info->col) {
+            copy[i][j] = array[i][j];
+            j = j + 1;
+        }
+        j = 0;
+        i = i + 1;
+    }
+    return (copy);
+}
+
+char **reset_map(char **array, char **copy, info_t *info, pos_t *pos)
+{
+    int i = 0;
+    int j = 0;
+
+    array = copy_2d(array, copy, info);
+    while (i < info->row) {
+        for(j = 0; j < info->col; j++) {
+            if (array[i][j] == 'P') {
+                pos->x = j;
+                pos->y = i;
+            }
+        }
+        i = i + 1;
+    }
+    return (array);
+}
+
 int sokoban(char **array, info_t *info, pos_t *pos)
 {
     int key = 0;
+    char **reset = mem_alloc_2d_array(info->row, info->col);
 
+    reset = copy_2d(array, reset, info);
     initscr();
     curs_set(0);
     keypad(stdscr, TRUE);
-    array[pos->y][ pos->x] = ' ';
+    print_2d_array(array, info);
     while (key != 27) {
         wrefresh(stdscr);
         key = getch();
+        if (key == 32)
+            array = reset_map(reset, array, info, pos);
         array = move_it(array,pos, key);
         clear();
         print_2d_array(array, info);
-        move(pos->y,pos->x);
     }
     clear();
     endwin();
