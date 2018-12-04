@@ -61,7 +61,7 @@ char **right(char **array, pos_t *pos)
     if (array[pos->y][pos->x + 1] != '#') {
         if (array[pos->y][pos->x + 1] == 'X' && array[pos->y][pos->x + 2] != '#' && array[pos->y][pos->x + 2] != 'X') {
             array[pos->y][pos->x + 1] = ' ';
-	    array[pos->y][pos->x + 2] = 'X';
+            array[pos->y][pos->x + 2] = 'X';
         }
         if (array[pos->y][pos->x + 1] != 'X' && array[pos->y][pos->x + 1] != 'O') {
             array[pos->y][pos->x] = ' ';
