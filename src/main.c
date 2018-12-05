@@ -31,9 +31,7 @@ char **up(char **array, pos_t *pos)
             array[pos->y - 1][pos->x] = ' ';
             array[pos->y - 2][pos->x] = 'X';
         }
-        if (array[pos->y - 1][pos->x] != 'X' && array[pos->y - 1][pos->x] != 'O') {
-            array[pos->y][pos->x] = ' ';
-            array[pos->y - 1][pos->x] = 'P';
+        if (array[pos->y - 1][pos->x] != 'X') {
             pos->y = pos->y - 1;
         }
     }
@@ -47,9 +45,7 @@ char **down(char **array, pos_t *pos)
             array[pos->y + 1][pos->x] = ' ';
             array[pos->y + 2][pos->x] = 'X';
         }
-        if (array[pos->y + 1][pos->x] != 'X' && array[pos->y + 1][pos->x] != 'O') {
-            array[pos->y][pos->x] = ' ';
-            array[pos->y + 1][pos->x] = 'P';
+        if (array[pos->y + 1][pos->x] != 'X') {
             pos->y = pos->y + 1;
           }
     }
@@ -63,9 +59,7 @@ char **right(char **array, pos_t *pos)
             array[pos->y][pos->x + 1] = ' ';
             array[pos->y][pos->x + 2] = 'X';
         }
-        if (array[pos->y][pos->x + 1] != 'X' && array[pos->y][pos->x + 1] != 'O') {
-            array[pos->y][pos->x] = ' ';
-            array[pos->y][pos->x + 1] = 'P';
+        if (array[pos->y][pos->x + 1] != 'X') {
             pos->x = pos->x + 1;
         }
     }
@@ -79,16 +73,14 @@ char **left(char **array, pos_t *pos)
             array[pos->y][pos->x - 1] = ' ';
             array[pos->y][pos->x - 2] = 'X';
         }
-        if (array[pos->y][pos->x - 1] != 'X' && array[pos->y][pos->x - 1] != 'O') {
-            array[pos->y][pos->x] = ' ';
-            array[pos->y][pos->x - 1] = 'P';
+        if (array[pos->y][pos->x - 1] != 'X') {
             pos->x = pos->x - 1;
         }
     }
     return (array);
 }
 
-char **move_it(char **array, pos_t *pos, int key)
+char **move_it(char **array, pos_t *pos, int key, info_t *info)
 {
     if (key == KEY_UP)
         array = up(array, pos);
@@ -98,6 +90,8 @@ char **move_it(char **array, pos_t *pos, int key)
         array = right(array, pos);
     if (key == KEY_LEFT)
         array = left(array, pos);
+    clear();
+    print_2d_array(array, info);
     return (array);
 }
 
@@ -124,15 +118,46 @@ char **reset_map(char **array, char **copy, info_t *info, pos_t *pos)
 
     array = copy_2d(array, copy, info);
     while (i < info->row) {
-        for(j = 0; j < info->col; j++) {
+        for (j = 0; j < info->col; j++) {
             if (array[i][j] == 'P') {
                 pos->x = j;
                 pos->y = i;
+                array[i][j] = ' ';
             }
         }
         i = i + 1;
     }
     return (array);
+}
+
+void resizing(info_t *info, char **array)
+{
+    int i = info->col;
+    int j = info->row;
+    int k = 0;
+
+    while (i > COLS || j > LINES) {
+        clear();
+        k = COLS/2-11;
+        mvprintw(LINES/2, k, "Enlarge the terminal :)");
+        wrefresh(stdscr);
+        usleep(100000);
+    }
+}
+
+int check_win(char **array, info_t *info)
+{
+    int i = 0;
+    int j = 0;
+
+    while (i < info->row) {
+        for (j = 0; j < info->col; j++) {
+            if (array[i][j] == 'O')
+                break;
+        }
+        i = i + 1;
+    }
+    return (0);
 }
 
 int sokoban(char **array, info_t *info, pos_t *pos)
@@ -145,14 +170,15 @@ int sokoban(char **array, info_t *info, pos_t *pos)
     curs_set(0);
     keypad(stdscr, TRUE);
     print_2d_array(array, info);
+    array[pos->y][pos->x] = ' ';
     while (key != 27) {
-        wrefresh(stdscr);
+        resizing(info, array);
         key = getch();
         if (key == 32)
             array = reset_map(reset, array, info, pos);
-        array = move_it(array,pos, key);
-        clear();
-        print_2d_array(array, info);
+        array = move_it(array,pos, key, info);
+        mvprintw(pos->y, pos->x, "P");
+        check_win(array, info);
     }
     clear();
     endwin();
