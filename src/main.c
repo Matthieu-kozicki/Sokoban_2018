@@ -33,19 +33,23 @@ void print_2d_array(char **array, info_t *info)
 char **up(char **array, pos_t *pos)
 {
     if (array[pos->y - 1][pos->x] != '#') {
-        if (array[pos->y - 1][pos->x] == 'X' && array[pos->y - 2][pos->x] == ' ') {
+        if (array[pos->y - 1][pos->x] == 'X' &&
+            array[pos->y - 2][pos->x] == ' ') {
             array[pos->y - 1][pos->x] = ' ';
             array[pos->y - 2][pos->x] = 'X';
         }
-        if (array[pos->y - 1][pos->x] == 'X' && array[pos->y - 2][pos->x] == 'O') { 
+        if (array[pos->y - 1][pos->x] == 'X' &&
+            array[pos->y - 2][pos->x] == 'O') {
             array[pos->y - 1][pos->x] = ' ';
             array[pos->y - 2][pos->x] = 'V';
         }
-        if (array[pos->y - 1][pos->x] == 'V' && array[pos->y - 2][pos->x] != '#') {
+        if (array[pos->y - 1][pos->x] == 'V' &&
+            array[pos->y - 2][pos->x] != '#') {
             array[pos->y - 1][pos->x] = 'O';
             array[pos->y - 2][pos->x] = 'X';
         }
-        if (array[pos->y - 1][pos->x] != 'X') {
+        if (array[pos->y - 1][pos->x] != 'X' &&
+            array[pos->y - 1][pos->x] != 'V') {
             pos->y = pos->y - 1;
         }
     }
@@ -55,19 +59,23 @@ char **up(char **array, pos_t *pos)
 char **down(char **array, pos_t *pos)
 {
     if (array[pos->y + 1][pos->x] != '#') {
-        if (array[pos->y + 1][pos->x] == 'X' && array[pos->y + 2][pos->x] == ' ') {
+        if (array[pos->y + 1][pos->x] == 'X' &&
+            array[pos->y + 2][pos->x] == ' ') {
             array[pos->y + 1][pos->x] = ' ';
             array[pos->y + 2][pos->x] = 'X';
         }
-        if (array[pos->y + 1][pos->x] == 'X' && array[pos->y + 2][pos->x] == 'O') {
+        if (array[pos->y + 1][pos->x] == 'X' &&
+            array[pos->y + 2][pos->x] == 'O') {
             array[pos->y + 1][pos->x] = ' ';
             array[pos->y + 2][pos->x] = 'V';
         }
-        if (array[pos->y + 1][pos->x] == 'V' && array[pos->y + 2][pos->x] != '#') {
+        if (array[pos->y + 1][pos->x] == 'V' &&
+            array[pos->y + 2][pos->x] != '#') {
             array[pos->y + 1][pos->x] = 'O';
             array[pos->y + 2][pos->x] = 'X';
         }
-        if (array[pos->y + 1][pos->x] != 'X') {
+        if (array[pos->y + 1][pos->x] != 'X' &&
+            array[pos->y + 1][pos->x] != 'V') {
             pos->y = pos->y + 1;
           }
     }
@@ -77,19 +85,23 @@ char **down(char **array, pos_t *pos)
 char **right(char **array, pos_t *pos)
 {
     if (array[pos->y][pos->x + 1] != '#') {
-        if (array[pos->y][pos->x + 1] == 'X' && array[pos->y][pos->x + 2] == ' ') {
+        if (array[pos->y][pos->x + 1] == 'X' &&
+            array[pos->y][pos->x + 2] == ' ') {
             array[pos->y][pos->x + 1] = ' ';
             array[pos->y][pos->x + 2] = 'X';
         }
-        if (array[pos->y][pos->x + 1] == 'X' && array[pos->y][pos->x + 2] == 'O') {
+        if (array[pos->y][pos->x + 1] == 'X' &&
+            array[pos->y][pos->x + 2] == 'O') {
             array[pos->y][pos->x + 1] = ' ';
             array[pos->y][pos->x + 2] = 'V';
         }
-        if (array[pos->y][pos->x + 1] == 'V' && array[pos->y][pos->x + 2] != '#') {
+        if (array[pos->y][pos->x + 1] == 'V' &&
+            array[pos->y][pos->x + 2] != '#') {
             array[pos->y][pos->x + 1] = 'O';
             array[pos->y][pos->x + 2] = 'X';
         }
-        if (array[pos->y][pos->x + 1] != 'X') {
+        if (array[pos->y][pos->x + 1] != 'X' &&
+            array[pos->y][pos->x + 1] != 'V') {
             pos->x = pos->x + 1;
         }
     }
@@ -99,19 +111,23 @@ char **right(char **array, pos_t *pos)
 char **left(char **array, pos_t *pos)
 {
     if (array[pos->y][pos->x - 1] != '#') {
-        if (array[pos->y][pos->x - 1] == 'X' && array[pos->y][pos->x - 2] == ' ') {
+        if (array[pos->y][pos->x - 1] == 'X' &&
+            array[pos->y][pos->x - 2] == ' ') {
             array[pos->y][pos->x - 1] = ' ';
             array[pos->y][pos->x - 2] = 'X';
         }
-        if (array[pos->y][pos->x - 1] == 'X' && array[pos->y][pos->x - 2] == 'O') {
+        if (array[pos->y][pos->x - 1] == 'X' &&
+            array[pos->y][pos->x - 2] == 'O') {
             array[pos->y][pos->x - 1] = ' ';
             array[pos->y][pos->x - 2] = 'V';
         }
-        if (array[pos->y][pos->x - 1] == 'V' && array[pos->y][pos->x - 2] != '#') {
+        if (array[pos->y][pos->x - 1] == 'V' &&
+            array[pos->y][pos->x - 2] != '#') {
             array[pos->y][pos->x - 1] = 'O';
             array[pos->y][pos->x - 2] = 'X';
         }
-        if (array[pos->y][pos->x - 1] != 'X') {
+        if (array[pos->y][pos->x - 1] != 'X' &&
+            array[pos->y][pos->x - 1] != 'V') {
             pos->x = pos->x - 1;
         }
     }
@@ -190,17 +206,18 @@ int check_win(char **array, info_t *info)
 
     while (i < info->row) {
         for (j = 0; j < info->col; j++) {
-            if (array[i][j] == 'O')
-                break;
+            if (array[i][j] == 'O' || array[i][j] == 'X')
+                return (1);
         }
         i = i + 1;
     }
-    return (0);
+    return (2);
 }
 
 int sokoban(char **array, info_t *info, pos_t *pos)
 {
     int key = 0;
+    int i = 0;
     char **reset = mem_alloc_2d_array(info->row, info->col);
 
     reset = copy_2d(array, reset, info);
@@ -216,7 +233,9 @@ int sokoban(char **array, info_t *info, pos_t *pos)
             array = reset_map(reset, array, info, pos);
         array = move_it(array,pos, key, info);
         mvprintw(pos->y, pos->x, "P");
-        check_win(array, info);
+         i = check_win(array, info);
+         if (i == 2)
+             break;
     }
     clear();
     endwin();
