@@ -107,4 +107,5 @@ int main(int arc, char **arg)
         return (84);
     }
     so(arc, arg);
+    return (0);
 }

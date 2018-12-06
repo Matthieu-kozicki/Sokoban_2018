@@ -67,7 +67,6 @@ int check_win(char **array, info_t *info)
 int sokoban(char **array, info_t *info, pos_t *pos)
 {
     int key = 0;
-    int i = 0;
     char **reset = mem_alloc_2d_array(info->row, info->col);
 
     reset = copy_2d(array, reset, info);
@@ -81,8 +80,7 @@ int sokoban(char **array, info_t *info, pos_t *pos)
         if (key == 32)
             array = reset_map(reset, array, info, pos);
         array = move_it(array,pos, key, info);
-        i = check_win(array, info);
-         if (i == 2)
+        if (check_win(array, info) == 2)
              break;
     }
     endwin();
