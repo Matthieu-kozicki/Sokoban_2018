@@ -113,13 +113,17 @@ char **left(char **array, pos_t *pos)
 char **move_it(char **array, pos_t *pos, int key, info_t *info)
 {
     resizing(info, array);
-    if (key == KEY_UP && array[pos->y - 1][pos->x] != '#')
+    if (key == KEY_UP && array[pos->y - 1][pos->x] != '#' &&
+        array[pos->y - 1][pos->x] != 0)
         array = up(array, pos);
-    if (key == KEY_DOWN && array[pos->y + 1][pos->x] != '#')
+    if (key == KEY_DOWN && array[pos->y + 1][pos->x] != '#' &&
+        array[pos->y + 1][pos->x] != 0)
         array = down(array, pos);
-    if (key == KEY_RIGHT && array[pos->y][pos->x + 1] != '#')
+    if (key == KEY_RIGHT && array[pos->y][pos->x + 1] != '#' &&
+        array[pos->y][pos->x + 1] != 0)
         array = right(array, pos);
-    if (key == KEY_LEFT && array[pos->y][pos->x - 1] != '#')
+    if (key == KEY_LEFT && array[pos->y][pos->x - 1] != '#' &&
+        array[pos->y][pos->x - 1] != 0)
         array = left(array, pos);
     clear();
     print_2d_array(array, info);
