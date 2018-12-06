@@ -32,120 +32,114 @@ void print_2d_array(char **array, info_t *info)
 
 char **up(char **array, pos_t *pos)
 {
-    if (array[pos->y - 1][pos->x] != '#') {
-        if (array[pos->y - 1][pos->x] == 'X' &&
-            array[pos->y - 2][pos->x] == ' ') {
-            array[pos->y - 1][pos->x] = ' ';
-            array[pos->y - 2][pos->x] = 'X';
-        }
-        if (array[pos->y - 1][pos->x] == 'X' &&
-            array[pos->y - 2][pos->x] == 'O') {
-            array[pos->y - 1][pos->x] = ' ';
-            array[pos->y - 2][pos->x] = 'V';
-        }
-        if (array[pos->y - 1][pos->x] == 'V' &&
-            array[pos->y - 2][pos->x] != '#') {
-            array[pos->y - 1][pos->x] = 'O';
-            array[pos->y - 2][pos->x] = 'X';
-        }
-        if (array[pos->y - 1][pos->x] != 'X' &&
-            array[pos->y - 1][pos->x] != 'V') {
-            pos->y = pos->y - 1;
-        }
+    if (array[pos->y - 1][pos->x] == 'X' &&
+        array[pos->y - 2][pos->x] == ' ') {
+        array[pos->y - 1][pos->x] = ' ';
+        array[pos->y - 2][pos->x] = 'X';
+    }
+    if (array[pos->y - 1][pos->x] == 'X' &&
+        array[pos->y - 2][pos->x] == 'O') {
+        array[pos->y - 1][pos->x] = ' ';
+        array[pos->y - 2][pos->x] = 'V';
+    }
+    if (array[pos->y - 1][pos->x] == 'V' &&
+        array[pos->y - 2][pos->x] != '#') {
+        array[pos->y - 1][pos->x] = 'O';
+        array[pos->y - 2][pos->x] = 'X';
+    }
+    if (array[pos->y - 1][pos->x] != 'X' &&
+        array[pos->y - 1][pos->x] != 'V') {
+        pos->y = pos->y - 1;
     }
     return (array);
 }
 
 char **down(char **array, pos_t *pos)
 {
-    if (array[pos->y + 1][pos->x] != '#') {
-        if (array[pos->y + 1][pos->x] == 'X' &&
-            array[pos->y + 2][pos->x] == ' ') {
-            array[pos->y + 1][pos->x] = ' ';
-            array[pos->y + 2][pos->x] = 'X';
-        }
-        if (array[pos->y + 1][pos->x] == 'X' &&
-            array[pos->y + 2][pos->x] == 'O') {
-            array[pos->y + 1][pos->x] = ' ';
-            array[pos->y + 2][pos->x] = 'V';
-        }
-        if (array[pos->y + 1][pos->x] == 'V' &&
-            array[pos->y + 2][pos->x] != '#') {
-            array[pos->y + 1][pos->x] = 'O';
-            array[pos->y + 2][pos->x] = 'X';
-        }
-        if (array[pos->y + 1][pos->x] != 'X' &&
-            array[pos->y + 1][pos->x] != 'V') {
-            pos->y = pos->y + 1;
-          }
+    if (array[pos->y + 1][pos->x] == 'X' &&
+        array[pos->y + 2][pos->x] == ' ') {
+        array[pos->y + 1][pos->x] = ' ';
+        array[pos->y + 2][pos->x] = 'X';
+    }
+    if (array[pos->y + 1][pos->x] == 'X' &&
+        array[pos->y + 2][pos->x] == 'O') {
+        array[pos->y + 1][pos->x] = ' ';
+        array[pos->y + 2][pos->x] = 'V';
+    }
+    if (array[pos->y + 1][pos->x] == 'V' &&
+        array[pos->y + 2][pos->x] != '#') {
+        array[pos->y + 1][pos->x] = 'O';
+        array[pos->y + 2][pos->x] = 'X';
+    }
+    if (array[pos->y + 1][pos->x] != 'X' &&
+        array[pos->y + 1][pos->x] != 'V') {
+        pos->y = pos->y + 1;
     }
     return (array);
 }
 
 char **right(char **array, pos_t *pos)
 {
-    if (array[pos->y][pos->x + 1] != '#') {
-        if (array[pos->y][pos->x + 1] == 'X' &&
-            array[pos->y][pos->x + 2] == ' ') {
-            array[pos->y][pos->x + 1] = ' ';
-            array[pos->y][pos->x + 2] = 'X';
-        }
-        if (array[pos->y][pos->x + 1] == 'X' &&
-            array[pos->y][pos->x + 2] == 'O') {
-            array[pos->y][pos->x + 1] = ' ';
-            array[pos->y][pos->x + 2] = 'V';
-        }
-        if (array[pos->y][pos->x + 1] == 'V' &&
-            array[pos->y][pos->x + 2] != '#') {
-            array[pos->y][pos->x + 1] = 'O';
-            array[pos->y][pos->x + 2] = 'X';
-        }
-        if (array[pos->y][pos->x + 1] != 'X' &&
-            array[pos->y][pos->x + 1] != 'V') {
-            pos->x = pos->x + 1;
-        }
+    if (array[pos->y][pos->x + 1] == 'X' &&
+        array[pos->y][pos->x + 2] == ' ') {
+        array[pos->y][pos->x + 1] = ' ';
+        array[pos->y][pos->x + 2] = 'X';
+    }
+    if (array[pos->y][pos->x + 1] == 'X' &&
+        array[pos->y][pos->x + 2] == 'O') {
+        array[pos->y][pos->x + 1] = ' ';
+        array[pos->y][pos->x + 2] = 'V';
+    }
+    if (array[pos->y][pos->x + 1] == 'V' &&
+        array[pos->y][pos->x + 2] != '#') {
+        array[pos->y][pos->x + 1] = 'O';
+        array[pos->y][pos->x + 2] = 'X';
+    }
+    if (array[pos->y][pos->x + 1] != 'X' &&
+        array[pos->y][pos->x + 1] != 'V') {
+        pos->x = pos->x + 1;
     }
     return (array);
 }
 
 char **left(char **array, pos_t *pos)
 {
-    if (array[pos->y][pos->x - 1] != '#') {
-        if (array[pos->y][pos->x - 1] == 'X' &&
-            array[pos->y][pos->x - 2] == ' ') {
-            array[pos->y][pos->x - 1] = ' ';
-            array[pos->y][pos->x - 2] = 'X';
-        }
-        if (array[pos->y][pos->x - 1] == 'X' &&
-            array[pos->y][pos->x - 2] == 'O') {
-            array[pos->y][pos->x - 1] = ' ';
-            array[pos->y][pos->x - 2] = 'V';
-        }
-        if (array[pos->y][pos->x - 1] == 'V' &&
-            array[pos->y][pos->x - 2] != '#') {
-            array[pos->y][pos->x - 1] = 'O';
-            array[pos->y][pos->x - 2] = 'X';
-        }
-        if (array[pos->y][pos->x - 1] != 'X' &&
-            array[pos->y][pos->x - 1] != 'V') {
-            pos->x = pos->x - 1;
-        }
+    if (array[pos->y][pos->x - 1] == 'X' &&
+        array[pos->y][pos->x - 2] == ' ') {
+        array[pos->y][pos->x - 1] = ' ';
+        array[pos->y][pos->x - 2] = 'X';
+    }
+    if (array[pos->y][pos->x - 1] == 'X' &&
+        array[pos->y][pos->x - 2] == 'O') {
+        array[pos->y][pos->x - 1] = ' ';
+        array[pos->y][pos->x - 2] = 'V';
+    }
+    if (array[pos->y][pos->x - 1] == 'V' &&
+        array[pos->y][pos->x - 2] != '#') {
+        array[pos->y][pos->x - 1] = 'O';
+        array[pos->y][pos->x - 2] = 'X';
+    }
+    if (array[pos->y][pos->x - 1] != 'X' &&
+        array[pos->y][pos->x - 1] != 'V') {
+        pos->x = pos->x - 1;
     }
     return (array);
 }
 
 char **move_it(char **array, pos_t *pos, int key, info_t *info)
 {
-    if (key == KEY_UP)
+    resizing(info, array);
+    if (key == KEY_UP && array[pos->y - 1][pos->x] != '#')
         array = up(array, pos);
-    if (key == KEY_DOWN)
+    if (key == KEY_DOWN && array[pos->y + 1][pos->x] != '#')
         array = down(array, pos);
-    if (key == KEY_RIGHT)
+    if (key == KEY_RIGHT && array[pos->y][pos->x + 1] != '#')
         array = right(array, pos);
-    if (key == KEY_LEFT)
+    if (key == KEY_LEFT && array[pos->y][pos->x - 1] != '#')
         array = left(array, pos);
     clear();
     print_2d_array(array, info);
+    mvprintw(pos->y, pos->x, "P");
     return (array);
 }
 
@@ -211,6 +205,7 @@ int check_win(char **array, info_t *info)
         }
         i = i + 1;
     }
+    clear();
     return (2);
 }
 
@@ -227,17 +222,14 @@ int sokoban(char **array, info_t *info, pos_t *pos)
     print_2d_array(array, info);
     array[pos->y][pos->x] = ' ';
     while (key != 27) {
-        resizing(info, array);
         key = getch();
         if (key == 32)
             array = reset_map(reset, array, info, pos);
         array = move_it(array,pos, key, info);
-        mvprintw(pos->y, pos->x, "P");
-         i = check_win(array, info);
+        i = check_win(array, info);
          if (i == 2)
              break;
     }
-    clear();
     endwin();
     return (0);
 }
@@ -310,10 +302,12 @@ int get_col(char *str)
 int so(int arc, char **arg)
 {
     int i = 0;
+    int fd = fs_open_file(arg[1]);
+    if (fd == -1)
+        return(84);
     struct stat s;
     stat(arg[1], &s);
     char buff[s.st_size + 1];
-    int fd = open(arg[1], O_RDONLY);
 
     read (fd, buff, s.st_size);
     buff[s.st_size + 1] = '\0';

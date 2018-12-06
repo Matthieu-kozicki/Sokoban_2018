@@ -5,9 +5,16 @@
 ** 2d array
 */
 
-#include "my.h"
+#include <ncurses.h>
 #include <unistd.h>
 #include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#include "my.h"
+#include <stdio.h>
+#include "my.h"
+
 
 char **mem_alloc_2d_array(int nb_rows, int nb_cols)
 {
@@ -21,6 +28,7 @@ char **mem_alloc_2d_array(int nb_rows, int nb_cols)
     }
     return (result);
 }
+
 void free_2d(char **str, int nb_rows, int nb_cols)
 {
     int i = 0;
@@ -28,4 +36,14 @@ void free_2d(char **str, int nb_rows, int nb_cols)
     for (i = 0; i <= nb_rows; i++)
         free(str[i]);
     free(str);
+}
+
+int fs_open_file(char const *filepath)
+{
+    int try = 0;
+
+    try = open(filepath, O_RDONLY);
+    if (try == -1)
+        my_putstr("FAILURE\n");
+    return (try);
 }
