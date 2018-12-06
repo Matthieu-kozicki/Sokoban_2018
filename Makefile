@@ -10,6 +10,8 @@ SRC	=	src/my_strlen.c \
 		src/my_putstr.c \
 		src/my_put_nbr.c \
 		src/other_function.c \
+		src/move.c \
+		src/control_map.c \
 
 SRCM	=	src/main.c
 

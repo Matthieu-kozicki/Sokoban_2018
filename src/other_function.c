@@ -47,3 +47,34 @@ int fs_open_file(char const *filepath)
         my_putstr("FAILURE\n");
     return (try);
 }
+
+void print_2d_array(char **array, info_t *info)
+{
+    int j = 0;
+    int i = 0;
+
+    for (j = 0; j < info->row; j++) {
+        for (i = 0; i < info->col; i++) {
+            if (array[j][i] == 'V')
+                printw("X");
+            else
+                printw("%c", array[j][i]);
+        }
+    }
+}
+
+char **copy_2d(char **array, char **copy, info_t *info)
+{
+    int i = 0;
+    int  j = 0;
+
+    while(i < info->row) {
+        while (j < info->col) {
+            copy[i][j] = array[i][j];
+            j = j + 1;
+        }
+        j = 0;
+        i = i + 1;
+    }
+    return (copy);
+}

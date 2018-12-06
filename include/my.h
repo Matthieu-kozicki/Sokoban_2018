@@ -19,13 +19,9 @@ typedef struct pos {
 void my_putchar(char c);
 int my_put_nbr(int nb);
 int fs_open_file(char const *filepath);
-void print_2d_array(char **array, info_t *info);
-char **up(char **array, pos_t *pos);
-char **down(char **array, pos_t *pos);
-char **right(char **array, pos_t *pos);
-char **left(char **array, pos_t *pos);
-char **move_it(char **array, pos_t *pos, int key, info_t *info);
 char **copy_2d(char **array, char **copy, info_t *info);
+void print_2d_array(char **array, info_t *info);
+char **move_it(char **array, pos_t *pos, int key, info_t *info);
 int check_win(char **array, info_t *info);
 int get_row(char *str);
 int sokoban(char **array, info_t *info, pos_t *pos);
