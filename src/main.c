@@ -107,6 +107,8 @@ int main(int arc, char **arg)
                   " 'O' for the storage locations.\n");
         return (84);
     }
-    so(arc, arg);
-    return (0);
+    if (so(arc, arg) == 84)
+        return (84);
+    else
+        return (0);
 }
