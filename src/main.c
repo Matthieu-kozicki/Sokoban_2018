@@ -39,6 +39,7 @@ char **load(char *str, info_t *info, pos_t *pos, char **copy)
     }
     return (copy);
 }
+
 int ban(char *str)
 {
     int col = get_col(str);

@@ -81,7 +81,7 @@ int sokoban(char **array, info_t *info, pos_t *pos)
             array = reset_map(reset, array, info, pos);
         array = move_it(array,pos, key, info);
         if (check_win(array, info) == 2)
-             break;
+            break;
     }
     endwin();
     return (0);
