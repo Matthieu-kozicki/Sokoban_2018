@@ -74,7 +74,7 @@ int so(int arc, char **arg)
     int i = 0;
     int fd = fs_open_file(arg[1]);
     if (fd == -1)
-        return(84);
+        return (84);
     struct stat s;
     stat(arg[1], &s);
     char buff[s.st_size + 1];
