@@ -11,7 +11,7 @@ SRC	=	src/my_strlen.c \
 		src/my_put_nbr.c \
 		src/other_function.c \
 		src/move.c \
-		src/control_map.c \
+		src/control_map.c
 
 SRCM	=	src/main.c
 
@@ -35,6 +35,10 @@ clean:
 
 %.o: %.c
 	gcc -o $@ -c $< -I include/
+
+tests_run:
+	gcc tests/test.c $(SRC) $(INCLUDE) -o unit_tests --coverage -lcriterion
+	./unit_tests
 
 fclean: clean
 	rm -f $(NAME)

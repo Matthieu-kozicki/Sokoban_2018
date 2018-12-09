@@ -12,10 +12,12 @@ typedef struct info {
     int row;
     int col;
 }info_t;
+
 typedef struct pos {
     int x;
     int y;
 }pos_t;
+
 void my_putchar(char c);
 int my_put_nbr(int nb);
 int fs_open_file(char const *filepath);

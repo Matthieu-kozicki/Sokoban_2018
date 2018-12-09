@@ -11,8 +11,9 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
-#include "my.h"
 #include <stdio.h>
+#include "my.h"
+
 
 char **reset_map(char **array, char **copy, info_t *info, pos_t *pos)
 {
