@@ -23,7 +23,6 @@ char **load(char *str, info_t *info, pos_t *pos, char **copy)
     while (hight < info->row) {
         while (str[k] != '\n') {
             if (str[k] == 'P') {
-                str[k] == ' ';
                 pos->x = lon;
                 pos->y = hight;
             }
@@ -49,6 +48,7 @@ int ban(char *str)
 
     array = load(str, &info, &pos, array);
     sokoban(array, &info, &pos);
+    free_2d(array, row, col);
 }
 int get_col(char *str)
 {
